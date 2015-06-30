@@ -1,0 +1,28 @@
+body {
+   margin:0;
+   padding:0;
+   font-size:1em;
+   font-family:Roboto,Helvetica,'Kannada Sangam MN','Helvetica neue';
+   /*background:#ebeef1;*/
+   background:#fff;
+   color:#333;
+   -webkit-backface-visibility: hidden;
+   -webkit-touch-callout: none !important;
+   -webkit-box-sizing: border-box;
+   overflow: hidden;
+}
+/*
+* {
+   http://maxogden.com/fast-webview-applications.html 
+   -webkit-touch-callout: none; 
+   touch-callout: none;
+   -webkit-text-size-adjust: none; 
+   -webkit-backface-visibility: hidden;
+   -webkit-tap-highlight-color: rgba(0,0,0,.25);
+   -webkit-user-select: none; 
+}
+*/
+A { text-decoration:none; }
+UL { list-style:none; margin:0; padding:0; }
+IMG { max-width:100%; border:0; }
+
