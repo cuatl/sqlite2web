@@ -15,6 +15,10 @@
                         {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SQLitePlugin\"><param name=\"android-package\" value=\"io.liteglue.SQLitePlugin\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -36,6 +40,9 @@
             "PACKAGE_NAME": "mx.tar.sqlite2web"
         },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "mx.tar.sqlite2web"
+        },
+        "cordova-sqlite-storage": {
             "PACKAGE_NAME": "mx.tar.sqlite2web"
         }
     },

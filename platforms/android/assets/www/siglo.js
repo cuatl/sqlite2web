@@ -7,7 +7,7 @@ swf.red=0;
 *  Carga inicial, en cuanto se carga el html (main.html)
 */
 function cargaInicial() {
-   $("#inicio").css('opacity',1);
+   $("#inicio").show();
    console.log('iniciamos :-)');
    document.addEventListener("deviceready", onDeviceReady, false);
    document.addEventListener("resume", onResume, false);
@@ -27,8 +27,8 @@ var onResume = function() {
 };
 /* menus {{ */
 var elmenus = function(e) {
-   $(".secciones").css('opacity',0);
-   $('#'+e).css('opacity',1);
+   $(".secciones").hide();
+   $('#'+e).show();
 };
 /* }}} */
 /* cuando el dispositivo está listo {{{ */

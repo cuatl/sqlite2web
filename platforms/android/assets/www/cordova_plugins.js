@@ -19,13 +19,21 @@ module.exports = [
         "clobbers": [
             "Connection"
         ]
+    },
+    {
+        "file": "plugins/cordova-sqlite-storage/www/SQLitePlugin.js",
+        "id": "cordova-sqlite-storage.SQLitePlugin",
+        "clobbers": [
+            "SQLitePlugin"
+        ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
     "cordova-plugin-whitelist": "1.0.0",
-    "cordova-plugin-network-information": "1.0.1"
+    "cordova-plugin-network-information": "1.0.1",
+    "cordova-sqlite-storage": "0.7.9"
 }
 // BOTTOM OF METADATA
 });
