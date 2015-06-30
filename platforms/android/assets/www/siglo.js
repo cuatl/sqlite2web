@@ -4,6 +4,8 @@ swf.tamano=0;
 swf.url = 'http://tar.mx/demos/api.php'; //cambia esto a tu servidor!
 swf.red=0;
 swf.mensaje=0; //mensajes en pantalla
+swf.donde=0;
+var db; //variable que tendrá la base de datos.
 /*
 *  Carga inicial, en cuanto se carga el html (main.html)
 */
@@ -21,7 +23,14 @@ function cargaInicial() {
    $(function() { FastClick.attach(document.body); });
 }
 var menuback = function() {
-   console.log('menuback');
+   //prevenimos que se salgan de la app al dar botón back
+   if(swf.donde==0) {
+      swf.donde=-1;
+      mensajes('Pulse el botón una vez más para salir',2);
+   } else if(swf.donde==-1) {
+      mensajes('Te vamos a extrañar',2);
+      setTimeout(function() { navigator.app.exitApp(); },2000); 
+   }
 };
 var onResume = function() {
    console.log('onResume');
@@ -34,34 +43,39 @@ var elmenus = function(e) {
 /* }}} */
 /* cuando el dispositivo está listo {{ */
 function onDeviceReady() {
-   var db = window.sqlitePlugin.openDatabase({name: "database.db", location: 1});
+   db = window.sqlitePlugin.openDatabase({name: "database.db", location: 1});
    //creamos la tabla1
    db.transaction(function(tx) {
-      tx.executeSql('CREATE TABLE IF NOT EXISTS tabla1 (id integer primary key, nombre varchar(64) , correo varchar(64), genero integer, nacimiento date)');
-      db.transaction(function(tx) {
-         tx.executeSql("select count(id) as no from tabla1", [], function(tx, res) {
-            console.log(JSON.stringify(res));
-            console.log("res.rows.length: " + res.rows.length + " -- should be 1");
-         });
-      });
+      tx.executeSql('CREATE TABLE IF NOT EXISTS tabla1 (id integer primary key, nombre varchar(64) , correo varchar(64), nacimiento date)');
+      cuentame();
    });
 }
 /* }}} */
 var almacena = function() {
-   //verificamos que llene algunos datos a fuerza...
-   var dd = $("input[name='nombre']");
-   var d = dd.val()||null;
-   if(d === null || d.length < 5) {
-      mensajes('Por favor escriba su nombre completo ··_',3);
-      dd.focus();
+   //datos
+   var name = $("input[name='nombre']").val();
+   var email= $("input[name='email']").val();
+   var nace=  $("input[name='nacimiento']").val();
+   //comprobación básica de que llene datos
+   if(email==''||email.length<10) {
+      mensajes('Debe escribir su correo electrónico',3);
       return false;
    }
-   var dd =$("input[name='email']");
-   d = dd.val()||null;
-   if(d === null || d.length < 5) { mensajes('Por favor escriba su correo electrónico',3); dd.focus(); return false; }
-   //ahora si almacenamos. Vamos a leer los datos tal como están (todos)
-   $.each( $("input"),function(i,item) {
-      console.log(item);
+   //vamos a almacenar
+   db.transaction(function(tx) {
+      tx.executeSql("INSERT INTO tabla1 (id,nombre,correo,nacimiento) VALUES (null,?,?,?)", [name, email,nace], function(tx, res) {
+         mensajes( (res.rowsAffected && res.rowsAffected == 1) ? 'Se almacenó el registro #'+res.insertId: 'No se pudo almacenar :(',5);
+         $("input").val(''); //limpiamos
+         cuentame();
+      });
+   });
+};
+/* cuenta registros en la db local */
+var cuentame() {
+   db.transaction(function(tx) {
+      tx.executeSql("select count(id) as no from tabla1", [], function(tx, res) {
+         $(".cuantos").html((res.rows.item(0).no && res.rows.item(0).no > 0)? 'Hay '+res.rows.item(0).no+' registros almacenados :)':' no tiene ninguno :(');
+      });
    });
 };
 /* muestra un mensaje en pantalla .wait {{{ */

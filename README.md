@@ -12,3 +12,6 @@ cordova-plugin-network-information 1.0.1 "Network Information" # para ver estatu
 cordova-plugin-whitelist 1.0.0 "Whitelist" # por defecto
 cordova-sqlite-storage 0.7.9 "Cordova sqlite storage plugin" # https://github.com/litehelpers/Cordova-sqlite-storage
 
+
+<preference name="KeyboardDisplayRequiresUserAction" value="false"/> en android/res/xml/config.xml para que se pueda hacer "focus" a un input desde javascript.
+

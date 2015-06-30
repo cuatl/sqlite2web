@@ -32,20 +32,16 @@
             permite que la información se sincronice a una base de datos MySQL remota.
             </p>
             <p><button class="botonene" onclick="elmenus('captura')">captura un registro</button></p>
+            <p class="cuantos"></p>
          </div>
 
          <div id="captura" class="secciones">
             <p class="lead">Por favor, llene los siguientes campos</p>
             <p align="center">
-            <input type="nombre" placeholder="Nombre completo" />
-            <input type="email" placeholder="Correo electrónico" />
-            <select name="genero">
-               <option value="0">no especificado</option>
-               <option value="1">Masculino</option>
-               <option value="Femenino"></option>
-            </select>
+            <input type="text" name="nombre" placeholder="Nombre completo" />
+            <input type="email" name="email" placeholder="Correo electrónico" />
+            Fecha de nacimiento:
             <input name="nacimiento" type="date" placeholder="Fecha de nacimiento" />
-            * requiere todos los campos
             <button class="botonene" onclick="almacena();">Almacenar información</button>
             </p>
          </div>
