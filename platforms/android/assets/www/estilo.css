@@ -11,18 +11,30 @@ body {
    -webkit-box-sizing: border-box;
    overflow: hidden;
 }
-/*
-* {
-   http://maxogden.com/fast-webview-applications.html 
-   -webkit-touch-callout: none; 
-   touch-callout: none;
-   -webkit-text-size-adjust: none; 
-   -webkit-backface-visibility: hidden;
-   -webkit-tap-highlight-color: rgba(0,0,0,.25);
-   -webkit-user-select: none; 
-}
-*/
 A { text-decoration:none; }
 UL { list-style:none; margin:0; padding:0; }
 IMG { max-width:100%; border:0; }
 
+/* menu */
+div#nav {
+   background:#009ff2;
+}
+.botone {
+  -webkit-appearance: none;
+   -webkit-border-radius:0;
+   border-radius:0;
+   padding:8px 10px;
+   border:0;
+   background:transparent;
+   color:#fff !important;
+}
+.secciones {
+   opacity:0;
+   -webkit-transition: all .5s ease-in;
+   background:#f8f8f8;
+   overflow:hidden;
+   position:relative;
+   top:40px;
+   padding:10px;
+   display:block;
+}
