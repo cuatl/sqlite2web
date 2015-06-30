@@ -20,7 +20,7 @@ IMG { max-width:100%; border:0; }
 div#nav {
    background:#009ff2;
 }
-.botone {
+.botone,.botonene {
   -webkit-appearance: none;
    -webkit-border-radius:0;
    border-radius:0;
@@ -29,13 +29,42 @@ div#nav {
    background:transparent;
    color:#fff !important;
 }
+.botonene {
+   color:#009ff2 !important;
+   font-weight:bold;
+   font-size:1.1em;
+}
 .secciones {
    display:none;
    -webkit-transition: all .5s ease-in;
    background:#f8f8f8;
    overflow:hidden;
-   position:relative;
-   top:40px;
    padding:10px;
+}
+INPUT,TEXTAREA,SELECT {
+   width:90%;
+   -webkit-appearance: none;
+   -webkit-border-radius:0;
+   border:none !important;
+   border-bottom:1px dotted #009ff2 !important;
    display:block;
+   font-size:1.2em;
+   font-weight:300;
+   padding:5px 10px;
+   margin-bottom:10px;
+}
+.lead {
+   font-size:1.3em;
+   font-weight:300;
+}
+
+
+
+div#estado {
+   z-index:15000; position:fixed; width:80%; 
+   bottom:160px; border:1px solid #000; 
+   left:7%; color:#fff; background:#000; 
+   padding:10px 10px; -webkit-border-radius:.3em; box-shadow:2px 3px 5px rgba(0,0,0,.25); 
+   display:none; font-size:1em;
+   -webkit-transform: translate3d(0,0,0); 
 }

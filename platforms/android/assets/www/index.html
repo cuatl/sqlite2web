@@ -27,10 +27,29 @@
 
          <div id="inicio" class="secciones">
             inicio
+            <p>
+            Aplicación demo que almacena información en una base de datos SQLite,
+            permite que la información se sincronice a una base de datos MySQL remota.
+            </p>
+            <p><button class="botonene" onclick="elmenus('captura')">captura un registro</button></p>
          </div>
+
          <div id="captura" class="secciones">
-            captura
+            <p class="lead">Por favor, llene los siguientes campos</p>
+            <p align="center">
+            <input type="nombre" placeholder="Nombre completo" />
+            <input type="email" placeholder="Correo electrónico" />
+            <select name="genero">
+               <option value="0">no especificado</option>
+               <option value="1">Masculino</option>
+               <option value="Femenino"></option>
+            </select>
+            <input name="nacimiento" type="date" placeholder="Fecha de nacimiento" />
+            * requiere todos los campos
+            <button class="botonene" onclick="almacena();">Almacenar información</button>
+            </p>
          </div>
+
          <div id="sincroniza" class="secciones">
             sinc
          </div>
@@ -39,6 +58,7 @@
 
       </div>
 
+      <div id="estado"></div>
       <script type="text/javascript" src="cordova.js"></script>
       <script type="text/javascript" src="zepto.min.js"></script>
       <script type="text/javascript" src="fastclick.js"></script>
