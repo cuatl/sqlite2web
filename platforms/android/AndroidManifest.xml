@@ -12,5 +12,6 @@
             </intent-filter>
         </activity>
     </application>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-sdk android:minSdkVersion="13" android:targetSdkVersion="22" />
 </manifest>

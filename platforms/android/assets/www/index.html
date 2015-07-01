@@ -5,7 +5,7 @@
       <meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" />
       <meta name="format-detection" content="telephone=no" />
       <!-- acomodar la línea de abajo -->
-      <meta http-equiv="Content-Security-Policy" content="default-src http://api.elsiglo.mx; img-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+      <meta http-equiv="Content-Security-Policy" content="default-src http://tar.mx; img-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
       <link rel="stylesheet" type="text/css" href="estilo.css" />
       <title>Demo de SQLite a web</title>
       <script>
@@ -27,7 +27,6 @@
          </div>
 
          <div id="inicio" class="secciones">
-            inicio
             <p>
             Aplicación demo que almacena información en una base de datos SQLite,
             permite que la información se sincronice a una base de datos MySQL remota.
@@ -53,7 +52,13 @@
          </div>
 
          <div id="sincroniza" class="secciones">
-            sinc
+            <p class="lead">Sincronizar registros con servidor externo</p>
+            <p class="cuantosin" alt="0"></p>
+            <p class="cuantos"></p>
+            <p align="center">
+            <button class="botonene" onclick="sincronizaMe();">Sincronizar con servidor</button>
+            </p>
+            <div class="aviso"></div>
          </div>
 
 
@@ -66,5 +71,7 @@
       <script type="text/javascript" src="fastclick.js"></script>
       <!-- archivo principal -->
       <script type="text/javascript" src="siglo.js"></script>
+      <!-- obtiene el IMEI, es para almacenar remotamente los datos... para el ejemplo es necesario pero se puede omitir y enviar algún otro tipo de identificación -->
+      <script type="text/javascript" src="telephonenumber.js"></script>
    </body>
 </html>

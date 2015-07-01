@@ -28,4 +28,7 @@
     <feature name="SQLitePlugin">
         <param name="android-package" value="io.liteglue.SQLitePlugin" />
     </feature>
+    <feature name="TelephoneNumber">
+       <param name="android-package" value="com.simonmacdonald.cordova.plugins.TelephoneNumber" />
+    </feature>
 </widget>
