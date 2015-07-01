@@ -6,6 +6,12 @@ Esta aplicación está hecha en Apache Cordova (Phonegap) 5.1.1
 
 [Aplicación principal](platforms/android/assets/www/)
 
+
+El ejemplo es totalmente funcional, se incluye en www/serverside un ejemplo de como recibir la información a MySQL. ¿Te gustaría probarlo? aquí [tenemos el APK](http://tar.mx/demos/sqlite2web.apk)
+
+![Alt text](sqlite2web.png?raw=true "Optional Title")
+
+
 Requiere por lo menos estos plugins:
 
 cordova-plugin-network-information 1.0.1 "Network Information" # para ver estatus de red
