@@ -22,6 +22,7 @@
          <div id="nav">
             <button onclick="elmenus('inicio')" class="botone">Inicio</button>
             <button onclick="elmenus('captura')" class="botone">Captura</button>
+            <button onclick="elmenus('consulta')" class="botone">Consulta</button>
             <button onclick="elmenus('sincroniza')" class="botone">Sincroniza</button>
          </div>
 
@@ -38,12 +39,17 @@
          <div id="captura" class="secciones">
             <p class="lead">Por favor, llene los siguientes campos</p>
             <p align="center">
-            <input type="text" name="nombre" placeholder="Nombre completo" />
             <input type="email" name="email" placeholder="Correo electrónico" />
             Fecha de nacimiento:
             <input name="nacimiento" type="date" placeholder="Fecha de nacimiento" />
             <button class="botonene" onclick="almacena();">Almacenar información</button>
             </p>
+         </div>
+
+         <div id="consulta" class="secciones">
+             <p class="lead">Registros almacenados</p>
+             <div>sin registros :(</div>
+             <p>remoteid = número en servidor remoto, si no se ha subido no tendrá o será 0.</p>
          </div>
 
          <div id="sincroniza" class="secciones">

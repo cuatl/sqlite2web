@@ -39,21 +39,43 @@ var onResume = function() {
 var elmenus = function(e) {
    $(".secciones").hide();
    $('#'+e).show();
+   if(e == 'consulta') { 
+      $("#consulta DIV").empty(); //limpiamos la tabla
+      consultadb();
+   }
 };
 /* }}} */
+var consultadb = function()  {
+   db.transaction(function(tx) {
+      //últimos 100 registros
+      tx.executeSql("SELECT * from tabla1 ORDER BY id DESC", [], function(tx, res) {
+         if(res!==null&&res.rows!==null&&res.rows!==undefined&&res.rows.length) {
+            for (var i = 0; i < res.rows.length; i++) {
+               var row = res.rows.item(i);
+               var time = (100+(i*10));
+               $("#consulta DIV").append('<p>Local id#'+row.id+' remote id#'+row.remoteid+'<br />'+row.correo+'<br />'+row.nacimiento+'</p>');
+            };
+         };
+      },function(e) {
+         console.log('ERROR='+e);
+      });
+   },function(e) { console.log('error: '+e);
+   });
+};
 /* cuando el dispositivo está listo {{ */
 function onDeviceReady() {
    db = window.sqlitePlugin.openDatabase({name: "database.db", location: 1});
    //creamos la tabla1
    db.transaction(function(tx) {
-      tx.executeSql('CREATE TABLE IF NOT EXISTS tabla1 (id integer primary key, nombre varchar(64) , correo varchar(64), nacimiento date)');
+      //tx.executeSql('DROP TABLE tabla1'); //elimina tabla
+      tx.executeSql('CREATE TABLE IF NOT EXISTS tabla1 (id integer primary key, remoteid integer , correo varchar(64), nacimiento date)');
       cuentame();
    });
 }
 /* }}} */
+/* almacena registro {{{ */
 var almacena = function() {
    //datos
-   var name = $("input[name='nombre']").val();
    var email= $("input[name='email']").val();
    var nace=  $("input[name='nacimiento']").val();
    //comprobación básica de que llene datos
@@ -63,21 +85,23 @@ var almacena = function() {
    }
    //vamos a almacenar
    db.transaction(function(tx) {
-      tx.executeSql("INSERT INTO tabla1 (id,nombre,correo,nacimiento) VALUES (null,?,?,?)", [name, email,nace], function(tx, res) {
+      tx.executeSql("INSERT INTO tabla1 (id,remoteid,correo,nacimiento) VALUES (null,0,?,?)", [email,nace], function(tx, res) {
          mensajes( (res.rowsAffected && res.rowsAffected == 1) ? 'Se almacenó el registro #'+res.insertId: 'No se pudo almacenar :(',5);
          $("input").val(''); //limpiamos
          cuentame();
       });
    });
 };
-/* cuenta registros en la db local */
-var cuentame() {
+/* }}} */
+/* cuenta registros en la db local {{{ */
+var cuentame = function() {
    db.transaction(function(tx) {
       tx.executeSql("select count(id) as no from tabla1", [], function(tx, res) {
-         $(".cuantos").html((res.rows.item(0).no && res.rows.item(0).no > 0)? 'Hay '+res.rows.item(0).no+' registros almacenados :)':' no tiene ninguno :(');
+         $(".cuantos").html((res.rows.item(0).no && res.rows.item(0).no > 0)? 'Hay '+res.rows.item(0).no+' registros almacenados :)':'Sin registros almacenados.');
       });
    });
 };
+/* }}} */
 /* muestra un mensaje en pantalla .wait {{{ */
 function mensajes(ms,duracion) {
    if(ms == 0) {

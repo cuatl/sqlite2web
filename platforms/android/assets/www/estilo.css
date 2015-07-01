@@ -68,3 +68,11 @@ div#estado {
    display:none; font-size:1em;
    -webkit-transform: translate3d(0,0,0); 
 }
+
+div#consulta DIV P {
+   background:#fff;
+   border-radius:5px;
+   padding:10px;
+   border-bottom:1px solid #ddd;
+   margin:0 0 10px 0;
+}
