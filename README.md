@@ -9,7 +9,7 @@ Esta aplicación está hecha en Apache Cordova (Phonegap) 5.1.1
 
 El ejemplo es totalmente funcional, se incluye en www/serverside un ejemplo de como recibir la información a MySQL. ¿Te gustaría probarlo? aquí [tenemos el APK](http://tar.mx/demos/sqlite2web.apk)
 
-![Alt text](sqlite2web.png?raw=true "Optional Title")
+![Demo](sqlite2web.png?raw=true "Demo")
 
 
 Requiere por lo menos estos plugins:
